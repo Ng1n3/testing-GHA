@@ -1,7 +1,22 @@
 name: Deploy react App
 on: [push]
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Lint
+        uses: actions/checkout@v4
+      - name: Install Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint code
+        run: npm run lint
+
   test:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
