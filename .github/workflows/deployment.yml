@@ -1,5 +1,5 @@
 name: Deploy react App
-on: [push]
+on: push
 jobs:
   lint:
     runs-on: ubuntu-latest
