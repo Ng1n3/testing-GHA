@@ -1,0 +1,16 @@
+name: Deploy react App
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: action/checkout@v4
+      - name: Install and Setup Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm run test
